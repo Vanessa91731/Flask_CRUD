@@ -14,7 +14,7 @@ def contacto():
 
 @app.route('/crud')
 def crud():
-    conn = pymysql.connect(host='localhost', user='root', passwd='', db='agenda')
+    conn = pymysql.connect(host='VanessaCer07.mysql.pythonanywhere-services.com', user='VanessaCer07', passwd='kimba87lu', db='VanessaCer07$default')
     cursor = conn.cursor()
     cursor.execute('select id, correo, comentarios from comenta order by id')
     datos = cursor.fetchall()
@@ -22,7 +22,7 @@ def crud():
 
 @app.route('/editar/<string:id>')
 def editar(id):
-    conn = pymysql.connect(host='localhost', user='root', passwd='', db='agenda')
+    conn = pymysql.connect(host='VanessaCer07.mysql.pythonanywhere-services.com', user='VanessaCer07', passwd='kimba87lu', db='VanessaCer07$default')
     cursor = conn.cursor()
     cursor.execute('select id, correo, comentarios from comenta where id = %s', (id))
     dato  = cursor.fetchall()
@@ -33,7 +33,7 @@ def editar_comenta(id):
     if request.method == 'POST':
         corr=request.form['correo']
         come=request.form['comentarios']
-        conn = pymysql.connect(host='localhost', user='root', passwd='', db='agenda')
+        conn = pymysql.connect(host='VanessaCer07.mysql.pythonanywhere-services.com', user='VanessaCer07', passwd='kimba87lu', db='VanessaCer07$default')
         cursor = conn.cursor()
         cursor.execute('update comenta set correo=%s, comentarios=%s where id=%s', (corr,come,id))
         conn.commit()
@@ -41,7 +41,7 @@ def editar_comenta(id):
 
 @app.route('/borrar/<string:id>')
 def borrar(id):
-    conn = pymysql.connect(host='localhost', user='root', passwd='', db='agenda')
+    conn = pymysql.connect(host='VanessaCer07.mysql.pythonanywhere-services.com', user='VanessaCer07', passwd='kimba87lu', db='VanessaCer07$default')
     cursor = conn.cursor()
     cursor.execute('delete from comenta where id = {0}'.format(id))
     conn.commit()
@@ -56,7 +56,7 @@ def agrega_comenta():
     if request.method == 'POST':
         aux_Correo = request.form['correo']
         aux_Comentarios = request.form['comentarios']
-        conn = pymysql.connect(host='localhost', user='root', passwd='', db='agenda' )
+        conn = pymysql.connect(host='VanessaCer07.mysql.pythonanywhere-services.com', user='VanessaCer07', passwd='kimba87lu', db='VanessaCer07$default')
         cursor = conn.cursor()
         cursor.execute('insert into comenta (correo,comentarios) values (%s, %s)',(aux_Correo, aux_Comentarios))
         conn.commit()
